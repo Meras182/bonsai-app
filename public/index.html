@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Bonsai">
+  <meta name="theme-color" content="#2f5d3a">
+  <title>Bonsai</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" href="icons/favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1 id="view-title">Übersicht</h1>
+    <button id="btn-add-tree" class="icon-btn" aria-label="Baum hinzufügen">＋</button>
+  </header>
+
+  <main id="main">
+    <section id="view-overview" class="view"></section>
+    <section id="view-trees" class="view hidden"></section>
+    <section id="view-tree" class="view hidden"></section>
+    <section id="view-settings" class="view hidden"></section>
+  </main>
+
+  <nav class="tabbar">
+    <button class="tab active" data-view="overview"><span class="tab-ico">📋</span><span>Übersicht</span></button>
+    <button class="tab" data-view="trees"><span class="tab-ico">🌳</span><span>Bäume</span></button>
+    <button class="tab" data-view="settings"><span class="tab-ico">⚙️</span><span>Einstellungen</span></button>
+  </nav>
+
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <h2 id="modal-title">Baum hinzufügen</h2>
+      <form id="tree-form">
+        <label>Name *
+          <input type="text" id="f-name" required maxlength="60" placeholder="z. B. Ficus auf dem Fensterbrett">
+        </label>
+        <label>Art
+          <input type="text" id="f-species" maxlength="60" placeholder="z. B. Ficus retusa">
+        </label>
+        <label>Notizen
+          <textarea id="f-notes" rows="2" maxlength="500" placeholder="Standort, Geschichte, …"></textarea>
+        </label>
+        <fieldset>
+          <legend>Pflegeintervalle (Tage)</legend>
+          <div class="interval-grid">
+            <label>💧 Gießen <input type="number" id="f-water" min="1" max="365" value="3"></label>
+            <label>🌾 Düngen <input type="number" id="f-fertilize" min="1" max="730" value="30"></label>
+            <label>✂️ Schneiden <input type="number" id="f-prune" min="1" max="1095" value="90"></label>
+            <label>🪴 Umtopfen <input type="number" id="f-repot" min="1" max="3650" value="730"></label>
+          </div>
+        </fieldset>
+        <div class="modal-actions">
+          <button type="button" class="btn secondary" id="modal-cancel">Abbrechen</button>
+          <button type="submit" class="btn primary" id="modal-save">Speichern</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="photo-overlay" class="photo-overlay hidden">
+    <button id="photo-close" class="icon-btn" aria-label="Schließen">✕</button>
+    <img id="photo-large" alt="Baumfoto">
+  </div>
+
+  <input type="file" id="photo-input" accept="image/*" capture="environment" class="hidden">
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

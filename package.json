@@ -1,0 +1,15 @@
+{
+  "name": "bonsai-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bonsai-Pflege PWA mit Foto-Dokumentation und Push-Erinnerungen",
+  "dependencies": {
+    "web-push": "^3.6.7"
+  },
+  "scripts": {
+    "vapid": "node scripts/generate-vapid-keys.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
